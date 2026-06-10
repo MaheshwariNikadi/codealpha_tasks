@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .item { padding: 10px; border-bottom: 1px solid #ccc; }
+        button { padding: 10px; background: blue; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+<h1>Your Cart</h1>
+
+{% if items %}
+
+    {% for item in items %}
+        <div class="item">
+            {{ item.product.name }} |
+            Qty: {{ item.qty }} |
+            ₹{{ item.product.price }}
+        </div>
+    {% endfor %}
+
+    <h2>Total: ₹{{ total }}</h2>
+
+    <a href="/checkout/">
+        <button>Checkout</button>
+    </a>
+
+{% else %}
+    <h3>Cart is empty</h3>
+{% endif %}
+
+</body>
+</html>
