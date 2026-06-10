@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+</head>
+<body>
+
+<h1>My Profile</h1>
+
+<p><b>Username:</b> {{ profile.user.username }}</p>
+
+<img src="{{ profile.image.url }}" width="120">
+
+<hr>
+
+<h3>Followers & Following</h3>
+
+<p>Followers: {{ profile.user.followers.count }}</p>
+<p>Following: {{ profile.user.following.count }}</p>
+
+<hr>
+
+{% if request.user != profile.user %}
+    <a href="{% url 'follow_user' profile.user.id %}">
+        Follow / Unfollow
+    </a>
+{% endif %}
+
+</body>
+</html>
